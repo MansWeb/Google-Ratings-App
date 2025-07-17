@@ -8,33 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
-        
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: #f8fafc;
-        }
-        
-        .ltr {
-            direction: ltr;
-        }
-        
-        .dashboard-card {
-            transition: all 0.3s ease;
-        }
-        
-        .dashboard-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        
-        .tab-active {
-            border-bottom: 3px solid #3b82f6;
-            color: #3b82f6;
-        }
-        
-        .modal {
-            transition: opacity 0.3s ease;
-        }
+        body { font-family: 'Tajawal', sans-serif; background-color: #f8fafc; }
+        .ltr { direction: ltr; }
+        .dashboard-card { transition: all 0.3s ease; }
+        .dashboard-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        .tab-active { border-bottom: 3px solid #3b82f6; color: #3b82f6; }
+        .modal { transition: opacity 0.3s ease; }
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-50">
@@ -47,23 +26,6 @@
                         <div class="flex-shrink-0 flex items-center">
                             <i class="fas fa-star-half-alt text-blue-600 text-2xl ml-2"></i>
                             <span class="font-bold text-xl text-gray-800">نجوم المراجعات</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="hidden md:block">
-                            <div class="flex items-center space-x-4 space-x-reverse">
-                                <button id="notificationBtn" class="text-gray-500 hover:text-blue-600 focus:outline-none">
-                                    <i class="fas fa-bell"></i>
-                                </button>
-                                <div class="relative">
-                                    <button id="profileBtn" class="flex items-center text-gray-500 hover:text-blue-600 focus:outline-none">
-                                        <span class="ml-2">مطعم البيت العربي</span>
-                                        <div class="h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center text-white">
-                                            م
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -82,45 +44,16 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <div class="dashboard-card bg-white rounded-lg shadow-md p-6 border-r-4 border-blue-500">
                     <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-blue-100 ml-4">
-                            <i class="fas fa-paper-plane text-blue-500"></i>
-                        </div>
+                        <div class="p-3 rounded-full bg-blue-100 ml-4"><i class="fas fa-paper-plane text-blue-500"></i></div>
                         <div>
                             <p class="text-gray-500 text-sm">طلبات المراجعة</p>
                             <p class="text-2xl font-bold text-gray-800" id="stats-requests">0</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="dashboard-card bg-white rounded-lg shadow-md p-6 border-r-4 border-green-500">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-green-100 ml-4">
-                            <i class="fas fa-check-circle text-green-500"></i>
-                        </div>
-                        <div>
-                            <p class="text-gray-500 text-sm">مراجعات مكتملة</p>
-                            <p class="text-2xl font-bold text-gray-800" id="stats-completed">0</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dashboard-card bg-white rounded-lg shadow-md p-6 border-r-4 border-yellow-500">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-yellow-100 ml-4">
-                            <i class="fas fa-star text-yellow-500"></i>
-                        </div>
-                        <div>
-                            <p class="text-gray-500 text-sm">متوسط التقييم</p>
-                            <p class="text-2xl font-bold text-gray-800">N/A</p>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="dashboard-card bg-white rounded-lg shadow-md p-6 border-r-4 border-purple-500">
                     <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-purple-100 ml-4">
-                            <i class="fas fa-users text-purple-500"></i>
-                        </div>
+                        <div class="p-3 rounded-full bg-purple-100 ml-4"><i class="fas fa-users text-purple-500"></i></div>
                         <div>
                             <p class="text-gray-500 text-sm">العملاء</p>
                             <p class="text-2xl font-bold text-gray-800" id="stats-customers">0</p>
@@ -133,181 +66,51 @@
             <div class="bg-white rounded-lg shadow-md mb-8">
                 <div class="border-b border-gray-200">
                     <nav class="flex -mb-px">
-                        <button class="tab-btn tab-active py-4 px-6 font-medium text-sm focus:outline-none" data-tab="requests">
-                            طلبات المراجعة
-                        </button>
-                        <button class="tab-btn py-4 px-6 font-medium text-sm text-gray-500 hover:text-gray-700 focus:outline-none" data-tab="customers">
-                            العملاء
-                        </button>
+                        <button class="tab-btn tab-active py-4 px-6 font-medium text-sm focus:outline-none" data-tab="requests">طلبات المراجعة</button>
+                        <button class="tab-btn py-4 px-6 font-medium text-sm text-gray-500 hover:text-gray-700 focus:outline-none" data-tab="customers">العملاء</button>
                     </nav>
                 </div>
 
-                <!-- Tab Content -->
                 <div class="p-6">
-                    <!-- Requests Tab (Default Active) -->
+                    <!-- Requests Tab -->
                     <div id="requests-tab" class="tab-content">
                         <div class="flex justify-between items-center mb-6">
                             <h2 class="text-xl font-bold text-gray-800">طلبات المراجعة الأخيرة</h2>
-                            <button id="newRequestBtn" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md flex items-center transition-colors duration-300">
-                                <i class="fas fa-plus ml-2"></i>
-                                طلب جديد
-                            </button>
+                            <button id="newRequestBtn" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md flex items-center"><i class="fas fa-plus ml-2"></i>طلب جديد</button>
                         </div>
-
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full bg-white">
-                                <thead>
-                                    <tr class="bg-gray-100 text-gray-600 text-sm leading-normal">
-                                        <th class="py-3 px-6 text-right">العميل</th>
-                                        <th class="py-3 px-6 text-right">تاريخ الإرسال</th>
-                                        <th class="py-3 px-6 text-right">الحالة</th>
-                                        <th class="py-3 px-6 text-right">طريقة الإرسال</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-gray-600 text-sm">
-                                    <!-- سيتم ملء البيانات هنا بواسطة الجافاسكريبت -->
-                                </tbody>
-                            </table>
-                        </div>
+                        <div class="overflow-x-auto"><table class="min-w-full bg-white"><thead><tr class="bg-gray-100 text-gray-600 text-sm leading-normal"><th class="py-3 px-6 text-right">العميل</th><th class="py-3 px-6 text-right">تاريخ الإرسال</th><th class="py-3 px-6 text-right">الحالة</th><th class="py-3 px-6 text-right">طريقة الإرسال</th></tr></thead><tbody class="text-gray-600 text-sm"></tbody></table></div>
                     </div>
-
                     <!-- Customers Tab -->
                     <div id="customers-tab" class="tab-content hidden">
                         <div class="flex justify-between items-center mb-6">
                             <h2 class="text-xl font-bold text-gray-800">قائمة العملاء</h2>
-                            <button id="newCustomerBtn" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md flex items-center transition-colors duration-300">
-                                <i class="fas fa-plus ml-2"></i>
-                                إضافة عميل
-                            </button>
+                            <button id="newCustomerBtn" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md flex items-center"><i class="fas fa-plus ml-2"></i>إضافة عميل</button>
                         </div>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full bg-white">
-                                <thead>
-                                    <tr class="bg-gray-100 text-gray-600 text-sm leading-normal">
-                                        <th class="py-3 px-6 text-right">الاسم</th>
-                                        <th class="py-3 px-6 text-right">رقم الهاتف</th>
-                                        <th class="py-3 px-6 text-right">البريد الإلكتروني</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-gray-600 text-sm">
-                                    <!-- سيتم ملء البيانات هنا بواسطة الجافاسكريبت -->
-                                </tbody>
-                            </table>
-                        </div>
+                        <div class="overflow-x-auto"><table class="min-w-full bg-white"><thead><tr class="bg-gray-100 text-gray-600 text-sm leading-normal"><th class="py-3 px-6 text-right">الاسم</th><th class="py-3 px-6 text-right">رقم الهاتف</th><th class="py-3 px-6 text-right">البريد الإلكتروني</th><th class="py-3 px-6 text-right">الإجراءات</th></tr></thead><tbody class="text-gray-600 text-sm"></tbody></table></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- New Request Modal -->
-    <div id="newRequestModal" class="modal fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
-            <div class="border-b px-4 py-3 flex justify-between items-center">
-                <h3 class="text-lg font-semibold text-gray-800">طلب مراجعة جديد</h3>
-                <button class="close-modal text-gray-400 hover:text-gray-600">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="p-6">
-                <form>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="customerSelect">
-                            اختر العميل
-                        </label>
-                        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="customerSelect">
-                            <option value="">اختر عميل...</option>
-                        </select>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">
-                            طريقة الإرسال
-                        </label>
-                        <div class="flex">
-                            <label class="inline-flex items-center ml-6">
-                                <input type="radio" class="form-radio" name="sendMethod" value="واتساب" checked>
-                                <span class="mr-2">واتساب</span>
-                            </label>
-                            <label class="inline-flex items-center ml-6">
-                                <input type="radio" class="form-radio" name="sendMethod" value="رسالة نصية">
-                                <span class="mr-2">رسالة نصية</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="flex justify-end mt-6">
-                        <button type="button" class="close-modal bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-md ml-2">
-                            إلغاء
-                        </button>
-                        <button type="button" id="sendRequestBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
-                            إرسال الطلب
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- New Customer Modal -->
-    <div id="newCustomerModal" class="modal fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
-            <div class="border-b px-4 py-3 flex justify-between items-center">
-                <h3 class="text-lg font-semibold text-gray-800">إضافة عميل جديد</h3>
-                <button class="close-modal text-gray-400 hover:text-gray-600">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="p-6">
-                <form id="newCustomerForm">
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="customerName">
-                            اسم العميل
-                        </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="customerName" type="text" placeholder="أدخل اسم العميل" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="customerPhone">
-                            رقم الهاتف
-                        </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="customerPhone" type="tel" placeholder="أدخل رقم الهاتف" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="customerEmail">
-                            البريد الإلكتروني (اختياري)
-                        </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="customerEmail" type="email" placeholder="أدخل البريد الإلكتروني">
-                    </div>
-                    <div class="flex justify-end mt-6">
-                        <button type="button" class="close-modal bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-md ml-2">
-                            إلغاء
-                        </button>
-                        <button type="button" id="addCustomerBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
-                            إضافة العميل
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    <!-- Modals -->
+    <div id="newRequestModal" class="modal fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50"><div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4"><div class="border-b px-4 py-3 flex justify-between items-center"><h3 class="text-lg font-semibold">طلب مراجعة جديد</h3><button class="close-modal text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button></div><div class="p-6"><form><div class="mb-4"><label class="block text-sm font-bold mb-2">اختر العميل</label><select class="shadow w-full" id="customerSelect"><option value="">اختر عميل...</option></select></div><div class="mb-4"><label class="block text-sm font-bold mb-2">طريقة الإرسال</label><div class="flex"><label class="inline-flex items-center ml-6"><input type="radio" name="sendMethod" value="واتساب" checked><span class="mr-2">واتساب</span></label><label class="inline-flex items-center ml-6"><input type="radio" name="sendMethod" value="رسالة نصية"><span class="mr-2">رسالة نصية</span></label></div></div><div class="flex justify-end mt-6"><button type="button" class="close-modal bg-gray-300 hover:bg-gray-400 font-bold py-2 px-4 rounded-md ml-2">إلغاء</button><button type="button" id="sendRequestBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">إرسال الطلب</button></div></form></div></div></div>
+    <div id="newCustomerModal" class="modal fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50"><div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4"><div class="border-b px-4 py-3 flex justify-between items-center"><h3 class="text-lg font-semibold">إضافة عميل جديد</h3><button class="close-modal text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button></div><div class="p-6"><form id="newCustomerForm"><div class="mb-4"><label class="block text-sm font-bold mb-2" for="customerName">اسم العميل</label><input class="shadow w-full" id="customerName" type="text" required></div><div class="mb-4"><label class="block text-sm font-bold mb-2" for="customerPhone">رقم الهاتف</label><input class="shadow w-full" id="customerPhone" type="tel" required></div><div class="mb-4"><label class="block text-sm font-bold mb-2" for="customerEmail">البريد الإلكتروني</label><input class="shadow w-full" id="customerEmail" type="email"></div><div class="flex justify-end mt-6"><button type="button" class="close-modal bg-gray-300 hover:bg-gray-400 font-bold py-2 px-4 rounded-md ml-2">إلغاء</button><button type="button" id="addCustomerBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">إضافة العميل</button></div></form></div></div></div>
     
+    <!-- (الجديد) نافذة تأكيد الحذف -->
+    <div id="deleteConfirmModal" class="modal fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50"><div class="bg-white rounded-lg shadow-xl w-full max-w-sm mx-4"><div class="p-6 text-center"><div class="w-12 h-12 rounded-full bg-red-100 p-2 flex items-center justify-center mx-auto mb-3.5"><i class="fas fa-trash text-red-600 text-xl"></i></div><h3 class="text-lg font-medium text-gray-900">هل أنت متأكد؟</h3><p class="mt-2 text-sm text-gray-500">هل تريد بالتأكيد حذف العميل <strong id="customerNameToDelete"></strong>؟ لا يمكن التراجع عن هذا الإجراء.</p></div><div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse rounded-b-lg"><button type="button" id="confirmDeleteBtn" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 sm:ml-3 sm:w-auto sm:text-sm">نعم، قم بالحذف</button><button type="button" class="close-modal mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:w-auto sm:text-sm">إلغاء</button></div></div></div>
+
     <!-- Success Alert -->
-    <div id="successAlert" class="fixed bottom-4 left-4 bg-green-100 border-r-4 border-green-500 text-green-700 p-4 rounded shadow-md hidden z-50">
-        <div class="flex items-center">
-            <div class="py-1"><i class="fas fa-check-circle text-green-500 ml-3"></i></div>
-            <div>
-                <p class="font-bold">تمت العملية بنجاح</p>
-                <p class="text-sm" id="successMessage"></p>
-            </div>
-        </div>
-    </div>
+    <div id="successAlert" class="fixed bottom-4 left-4 bg-green-100 border-r-4 border-green-500 text-green-700 p-4 rounded shadow-md hidden z-50"><div class="flex items-center"><div class="py-1"><i class="fas fa-check-circle text-green-500 ml-3"></i></div><div><p class="font-bold">تمت العملية بنجاح</p><p class="text-sm" id="successMessage"></p></div></div></div>
 
 <script>
     const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzt7O2jSkEVbjUgiM4Z0JXMYTiyLmyZlc-SSuNJWCI9aFhFuUXkcfAuw7FhjnyFwJjvAg/exec';
 
     document.addEventListener('DOMContentLoaded', function() {
-        
         const loadingSpinner = `<tr><td colspan="4" class="text-center p-4"><i class="fas fa-spinner fa-spin text-blue-500 text-2xl"></i></td></tr>`;
+        const customersTableBody = document.querySelector('#customers-tab tbody');
+        const requestsTableBody = document.querySelector('#requests-tab tbody');
 
-        // --- تحميل البيانات الأولية ---
         loadRequests();
         loadCustomers();
 
@@ -316,40 +119,21 @@
         const tabContents = document.querySelectorAll('.tab-content');
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                tabBtns.forEach(b => b.classList.remove('tab-active', 'text-blue-600'));
-                tabBtns.forEach(b => b.classList.add('text-gray-500', 'hover:text-gray-700'));
-                
+                tabBtns.forEach(b => { b.classList.remove('tab-active', 'text-blue-600'); b.classList.add('text-gray-500', 'hover:text-gray-700'); });
                 tabContents.forEach(c => c.classList.add('hidden'));
-                
                 btn.classList.add('tab-active', 'text-blue-600');
-                btn.classList.remove('text-gray-500', 'hover:text-gray-700');
-
-                const tabId = btn.getAttribute('data-tab');
-                document.getElementById(`${tabId}-tab`).classList.remove('hidden');
+                document.getElementById(`${btn.dataset.tab}-tab`).classList.remove('hidden');
             });
         });
 
         // --- التحكم بالنماذج ---
         const modals = document.querySelectorAll('.modal');
-        function openModal(modalId) {
-            document.getElementById(modalId)?.classList.remove('hidden');
-            document.getElementById(modalId)?.classList.add('flex');
-        }
-        function closeModal(modal) {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
+        function openModal(modalId) { document.getElementById(modalId)?.classList.remove('hidden'); document.getElementById(modalId)?.classList.add('flex'); }
+        function closeModal(modal) { modal.classList.add('hidden'); modal.classList.remove('flex'); }
         document.getElementById('newRequestBtn').addEventListener('click', () => openModal('newRequestModal'));
         document.getElementById('newCustomerBtn').addEventListener('click', () => openModal('newCustomerModal'));
-        
-        document.querySelectorAll('.close-modal').forEach(btn => {
-            btn.addEventListener('click', (e) => closeModal(e.target.closest('.modal')));
-        });
-        modals.forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) closeModal(modal);
-            });
-        });
+        document.querySelectorAll('.close-modal').forEach(btn => btn.addEventListener('click', (e) => closeModal(e.target.closest('.modal'))));
+        modals.forEach(modal => modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(modal); }));
 
         // --- عرض رسالة النجاح ---
         const successAlert = document.getElementById('successAlert');
@@ -362,63 +146,53 @@
 
         // --- دوال جلب البيانات ---
         async function loadRequests() {
-            const tableBody = document.querySelector('#requests-tab tbody');
-            tableBody.innerHTML = loadingSpinner;
+            requestsTableBody.innerHTML = loadingSpinner;
             try {
                 const response = await fetch(`${WEB_APP_URL}?action=getRequests`);
                 const result = await response.json();
-                tableBody.innerHTML = ''; 
+                requestsTableBody.innerHTML = ''; 
                 if (result.status === 'success' && result.data.length > 0) {
                     document.getElementById('stats-requests').textContent = result.data.length;
                     result.data.reverse().forEach(req => {
-                        const statusColors = {'تم الإرسال': 'bg-blue-100 text-blue-800'};
-                        const row = `
+                        requestsTableBody.innerHTML += `
                             <tr class="border-b border-gray-200 hover:bg-gray-50">
                                 <td class="py-3 px-6 text-right">${req.customerName}</td>
                                 <td class="py-3 px-6 text-right">${new Date(req.sendDate).toLocaleDateString('ar-EG')}</td>
-                                <td class="py-3 px-6 text-right">
-                                    <span class="${statusColors[req.status] || 'bg-gray-100'} py-1 px-3 rounded-full text-xs">${req.status}</span>
-                                </td>
+                                <td class="py-3 px-6 text-right"><span class="bg-blue-100 text-blue-800 py-1 px-3 rounded-full text-xs">${req.status}</span></td>
                                 <td class="py-3 px-6 text-right">${req.method}</td>
                             </tr>`;
-                        tableBody.innerHTML += row;
                     });
                 } else {
-                     tableBody.innerHTML = `<tr><td colspan="4" class="text-center p-4 text-gray-500">لا توجد طلبات لعرضها.</td></tr>`;
+                     requestsTableBody.innerHTML = `<tr><td colspan="4" class="text-center p-4 text-gray-500">لا توجد طلبات لعرضها.</td></tr>`;
                 }
-            } catch (error) {
-                tableBody.innerHTML = `<tr><td colspan="4" class="text-center p-4 text-red-500">فشل تحميل البيانات. تأكد من صحة رابط الـ API وأذونات النشر.</td></tr>`;
-            }
+            } catch (error) { requestsTableBody.innerHTML = `<tr><td colspan="4" class="text-center p-4 text-red-500">فشل تحميل البيانات.</td></tr>`; }
         }
 
         async function loadCustomers() {
-            const tableBody = document.querySelector('#customers-tab tbody');
-            const customerSelect = document.getElementById('customerSelect');
-            tableBody.innerHTML = loadingSpinner;
+            customersTableBody.innerHTML = loadingSpinner;
             try {
                 const response = await fetch(`${WEB_APP_URL}?action=getCustomers`);
                 const result = await response.json();
-                tableBody.innerHTML = '';
-                customerSelect.innerHTML = '<option value="">اختر عميل...</option>';
+                customersTableBody.innerHTML = '';
+                document.getElementById('customerSelect').innerHTML = '<option value="">اختر عميل...</option>';
                 if (result.status === 'success' && result.data.length > 0) {
                      document.getElementById('stats-customers').textContent = result.data.length;
                     result.data.reverse().forEach(cust => {
-                        const row = `
-                            <tr class="border-b border-gray-200 hover:bg-gray-50">
+                        customersTableBody.innerHTML += `
+                            <tr class="border-b border-gray-200 hover:bg-gray-50" data-customer-id="${cust.id}" data-customer-name="${cust.name}">
                                 <td class="py-3 px-6 text-right">${cust.name}</td>
                                 <td class="py-3 px-6 text-right ltr">${cust.phone}</td>
                                 <td class="py-3 px-6 text-right">${cust.email || ''}</td>
+                                <td class="py-3 px-6 text-right">
+                                    <button class="delete-customer-btn text-gray-400 hover:text-red-600"><i class="fas fa-trash"></i></button>
+                                </td>
                             </tr>`;
-                        tableBody.innerHTML += row;
-                        const option = `<option value="${cust.id}">${cust.name}</option>`;
-                        customerSelect.innerHTML += option;
+                        document.getElementById('customerSelect').innerHTML += `<option value="${cust.id}">${cust.name}</option>`;
                     });
                 } else {
-                    tableBody.innerHTML = `<tr><td colspan="3" class="text-center p-4 text-gray-500">لا يوجد عملاء لعرضهم.</td></tr>`;
+                    customersTableBody.innerHTML = `<tr><td colspan="4" class="text-center p-4 text-gray-500">لا يوجد عملاء لعرضهم.</td></tr>`;
                 }
-            } catch(error) {
-                 tableBody.innerHTML = `<tr><td colspan="3" class="text-center p-4 text-red-500">فشل تحميل البيانات. تأكد من صحة رابط الـ API وأذونات النشر.</td></tr>`;
-            }
+            } catch(error) { customersTableBody.innerHTML = `<tr><td colspan="4" class="text-center p-4 text-red-500">فشل تحميل البيانات.</td></tr>`; }
         }
 
         // --- دوال إرسال البيانات ---
@@ -426,23 +200,12 @@
             const originalText = btn.innerHTML;
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-            
             try {
-                const response = await fetch(WEB_APP_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(payload),
-                    // لا نرسل أي هيدر، ليتعامل معه المتصفح كـ text/plain
-                    // هذا هو مفتاح حل مشكلة CORS Preflight
-                });
-                
-                // Google Script يعيد التوجيه، لذا لا يمكننا قراءة الرد مباشرة
-                // نعتبر أن الطلب ناجح طالما لم يحدث خطأ في الشبكة
+                await fetch(WEB_APP_URL, { method: 'POST', body: JSON.stringify(payload) });
                 return { status: 'success' };
-
             } catch (error) {
-                console.error(`Error during POST request:`, error);
-                alert('حدث خطأ فادح أثناء الاتصال بالخادم. تحقق من الـ Console لمزيد من التفاصيل.');
-                return { status: 'error', message: error.message };
+                alert('حدث خطأ فادح أثناء الاتصال بالخادم.');
+                return { status: 'error' };
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalText;
@@ -451,43 +214,53 @@
 
         document.getElementById('addCustomerBtn').addEventListener('click', async () => {
             const name = document.getElementById('customerName').value;
-            const phone = document.getElementById('customerPhone').value;
-            const email = document.getElementById('customerEmail').value;
-
-            if (!name || !phone) {
-                alert('الرجاء إدخال الاسم ورقم الهاتف.');
-                return;
-            }
-            
-            const payload = { action: 'addCustomer', payload: { name, phone, email } };
+            if (!name || !document.getElementById('customerPhone').value) { alert('الرجاء إدخال الاسم ورقم الهاتف.'); return; }
+            const payload = { action: 'addCustomer', payload: { name, phone: document.getElementById('customerPhone').value, email: document.getElementById('customerEmail').value } };
             const result = await postData(document.getElementById('addCustomerBtn'), payload);
-
             if (result.status === 'success') {
                 showSuccessAlert('تمت إضافة العميل بنجاح.');
                 closeModal(document.getElementById('newCustomerModal'));
                 document.getElementById('newCustomerForm').reset();
                 loadCustomers();
-                loadRequests(); // تحديث كلا الجدولين
             }
         });
 
         document.getElementById('sendRequestBtn').addEventListener('click', async () => {
-            const customerSelect = document.getElementById('customerSelect');
-            const customerName = customerSelect.options[customerSelect.selectedIndex].text;
-            const method = document.querySelector('input[name="sendMethod"]:checked').value;
-
-            if (!customerSelect.value) {
-                alert('الرجاء اختيار عميل.');
-                return;
-            }
-            
-            const payload = { action: 'addRequest', payload: { customerName, method } };
+            const select = document.getElementById('customerSelect');
+            if (!select.value) { alert('الرجاء اختيار عميل.'); return; }
+            const payload = { action: 'addRequest', payload: { customerName: select.options[select.selectedIndex].text, method: document.querySelector('input[name="sendMethod"]:checked').value } };
             const result = await postData(document.getElementById('sendRequestBtn'), payload);
-
             if (result.status === 'success') {
                 showSuccessAlert('تم إرسال طلب المراجعة بنجاح.');
                 closeModal(document.getElementById('newRequestModal'));
                 loadRequests();
+            }
+        });
+
+        // --- (الجديد) تفعيل حذف العميل ---
+        customersTableBody.addEventListener('click', function(e) {
+            const deleteButton = e.target.closest('.delete-customer-btn');
+            if (deleteButton) {
+                const row = deleteButton.closest('tr');
+                const customerId = row.dataset.customerId;
+                const customerName = row.dataset.customerName;
+                
+                document.getElementById('customerNameToDelete').textContent = `"${customerName}"`;
+                // نخزن الـ ID في زر التأكيد لاستخدامه لاحقاً
+                document.getElementById('confirmDeleteBtn').dataset.customerId = customerId;
+                openModal('deleteConfirmModal');
+            }
+        });
+
+        document.getElementById('confirmDeleteBtn').addEventListener('click', async function() {
+            const customerId = this.dataset.customerId;
+            const payload = { action: 'deleteCustomer', payload: { id: customerId } };
+            const result = await postData(this, payload);
+            
+            if (result.status === 'success') {
+                showSuccessAlert('تم حذف العميل بنجاح.');
+                closeModal(document.getElementById('deleteConfirmModal'));
+                loadCustomers();
             }
         });
     });
