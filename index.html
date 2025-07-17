@@ -14,10 +14,6 @@
             background-color: #f8fafc;
         }
         
-        .rtl-grid {
-            direction: rtl;
-        }
-        
         .ltr {
             direction: ltr;
         }
@@ -115,7 +111,7 @@
                         </div>
                         <div>
                             <p class="text-gray-500 text-sm">متوسط التقييم</p>
-                            <p class="text-2xl font-bold text-gray-800">4.7</p>
+                            <p class="text-2xl font-bold text-gray-800">N/A</p>
                         </div>
                     </div>
                 </div>
@@ -143,15 +139,6 @@
                         <button class="tab-btn py-4 px-6 font-medium text-sm text-gray-500 hover:text-gray-700 focus:outline-none" data-tab="customers">
                             العملاء
                         </button>
-                        <button class="tab-btn py-4 px-6 font-medium text-sm text-gray-500 hover:text-gray-700 focus:outline-none" data-tab="templates">
-                            قوالب الرسائل
-                        </button>
-                        <button class="tab-btn py-4 px-6 font-medium text-sm text-gray-500 hover:text-gray-700 focus:outline-none" data-tab="reports">
-                            التقارير
-                        </button>
-                        <button class="tab-btn py-4 px-6 font-medium text-sm text-gray-500 hover:text-gray-700 focus:outline-none" data-tab="settings">
-                            الإعدادات
-                        </button>
                     </nav>
                 </div>
 
@@ -175,7 +162,6 @@
                                         <th class="py-3 px-6 text-right">تاريخ الإرسال</th>
                                         <th class="py-3 px-6 text-right">الحالة</th>
                                         <th class="py-3 px-6 text-right">طريقة الإرسال</th>
-                                        <th class="py-3 px-6 text-right">الإجراءات</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-gray-600 text-sm">
@@ -201,7 +187,6 @@
                                         <th class="py-3 px-6 text-right">الاسم</th>
                                         <th class="py-3 px-6 text-right">رقم الهاتف</th>
                                         <th class="py-3 px-6 text-right">البريد الإلكتروني</th>
-                                        <th class="py-3 px-6 text-right">الإجراءات</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-gray-600 text-sm">
@@ -209,24 +194,6 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-
-                    <!-- Templates Tab -->
-                    <div id="templates-tab" class="tab-content hidden">
-                        <!-- محتوى قوالب الرسائل هنا -->
-                        <h2 class="text-xl font-bold text-gray-800">قوالب الرسائل (سيتم تطويرها لاحقاً)</h2>
-                    </div>
-
-                    <!-- Reports Tab -->
-                    <div id="reports-tab" class="tab-content hidden">
-                        <!-- محتوى التقارير هنا -->
-                         <h2 class="text-xl font-bold text-gray-800">التقارير (سيتم تطويرها لاحقاً)</h2>
-                    </div>
-
-                    <!-- Settings Tab -->
-                    <div id="settings-tab" class="tab-content hidden">
-                        <!-- محتوى الإعدادات هنا -->
-                         <h2 class="text-xl font-bold text-gray-800">الإعدادات (سيتم تطويرها لاحقاً)</h2>
                     </div>
                 </div>
             </div>
@@ -250,7 +217,6 @@
                         </label>
                         <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="customerSelect">
                             <option value="">اختر عميل...</option>
-                            <!-- سيتم ملء العملاء هنا بواسطة الجافاسكريبت -->
                         </select>
                     </div>
                     <div class="mb-4">
@@ -265,10 +231,6 @@
                             <label class="inline-flex items-center ml-6">
                                 <input type="radio" class="form-radio" name="sendMethod" value="رسالة نصية">
                                 <span class="mr-2">رسالة نصية</span>
-                            </label>
-                            <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="sendMethod" value="بريد إلكتروني">
-                                <span class="mr-2">بريد إلكتروني</span>
                             </label>
                         </div>
                     </div>
@@ -339,12 +301,11 @@
     </div>
 
 <script>
-    // الرابط الذي حصلت عليه من Google Apps Script
     const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzt7O2jSkEVbjUgiM4Z0JXMYTiyLmyZlc-SSuNJWCI9aFhFuUXkcfAuw7FhjnyFwJjvAg/exec';
 
     document.addEventListener('DOMContentLoaded', function() {
         
-        const loadingSpinner = `<div class="text-center p-4 col-span-full"><i class="fas fa-spinner fa-spin text-blue-500 text-2xl"></i></div>`;
+        const loadingSpinner = `<tr><td colspan="4" class="text-center p-4"><i class="fas fa-spinner fa-spin text-blue-500 text-2xl"></i></td></tr>`;
 
         // --- تحميل البيانات الأولية ---
         loadRequests();
@@ -368,14 +329,11 @@
             });
         });
 
-        // --- التحكم بالنماذج المنبثقة (Modals) ---
+        // --- التحكم بالنماذج ---
         const modals = document.querySelectorAll('.modal');
         function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-            }
+            document.getElementById(modalId)?.classList.remove('hidden');
+            document.getElementById(modalId)?.classList.add('flex');
         }
         function closeModal(modal) {
             modal.classList.add('hidden');
@@ -383,7 +341,6 @@
         }
         document.getElementById('newRequestBtn').addEventListener('click', () => openModal('newRequestModal'));
         document.getElementById('newCustomerBtn').addEventListener('click', () => openModal('newCustomerModal'));
-        // document.getElementById('newTemplateBtn').addEventListener('click', () => openModal('newTemplateModal'));
         
         document.querySelectorAll('.close-modal').forEach(btn => {
             btn.addEventListener('click', (e) => closeModal(e.target.closest('.modal')));
@@ -403,53 +360,41 @@
             setTimeout(() => { successAlert.classList.add('hidden'); }, 4000);
         }
 
-        // --- دوال جلب البيانات من جوجل شيت ---
+        // --- دوال جلب البيانات ---
         async function loadRequests() {
             const tableBody = document.querySelector('#requests-tab tbody');
-            tableBody.innerHTML = `<tr><td colspan="5">${loadingSpinner}</td></tr>`;
+            tableBody.innerHTML = loadingSpinner;
             try {
                 const response = await fetch(`${WEB_APP_URL}?action=getRequests`);
                 const result = await response.json();
-                tableBody.innerHTML = ''; // تفريغ الجدول
+                tableBody.innerHTML = ''; 
                 if (result.status === 'success' && result.data.length > 0) {
                     document.getElementById('stats-requests').textContent = result.data.length;
-                    result.data.reverse().forEach(req => { // .reverse() لعرض الأحدث أولاً
-                        const statusColors = {
-                            'مكتمل': 'bg-green-100 text-green-800',
-                            'تم الفتح': 'bg-yellow-100 text-yellow-800',
-                            'تم الإرسال': 'bg-blue-100 text-blue-800',
-                            'فشل': 'bg-red-100 text-red-800'
-                        };
+                    result.data.reverse().forEach(req => {
+                        const statusColors = {'تم الإرسال': 'bg-blue-100 text-blue-800'};
                         const row = `
                             <tr class="border-b border-gray-200 hover:bg-gray-50">
                                 <td class="py-3 px-6 text-right">${req.customerName}</td>
                                 <td class="py-3 px-6 text-right">${new Date(req.sendDate).toLocaleDateString('ar-EG')}</td>
                                 <td class="py-3 px-6 text-right">
-                                    <span class="${statusColors[req.status] || 'bg-gray-100 text-gray-800'} py-1 px-3 rounded-full text-xs">${req.status}</span>
+                                    <span class="${statusColors[req.status] || 'bg-gray-100'} py-1 px-3 rounded-full text-xs">${req.status}</span>
                                 </td>
                                 <td class="py-3 px-6 text-right">${req.method}</td>
-                                <td class="py-3 px-6 text-right">
-                                    <div class="flex justify-end item-center">
-                                        <button class="transform hover:text-blue-500 hover:scale-110 transition-all duration-300 ml-3"><i class="fas fa-eye"></i></button>
-                                        <button class="transform hover:text-blue-500 hover:scale-110 transition-all duration-300 ml-3"><i class="fas fa-redo-alt"></i></button>
-                                    </div>
-                                </td>
                             </tr>`;
                         tableBody.innerHTML += row;
                     });
                 } else {
-                     tableBody.innerHTML = `<tr><td colspan="5" class="text-center p-4 text-gray-500">لا توجد طلبات لعرضها.</td></tr>`;
+                     tableBody.innerHTML = `<tr><td colspan="4" class="text-center p-4 text-gray-500">لا توجد طلبات لعرضها.</td></tr>`;
                 }
             } catch (error) {
-                tableBody.innerHTML = `<tr><td colspan="5" class="text-center p-4 text-red-500">فشل تحميل البيانات. تأكد من صحة رابط الـ API.</td></tr>`;
-                console.error("Error loading requests:", error);
+                tableBody.innerHTML = `<tr><td colspan="4" class="text-center p-4 text-red-500">فشل تحميل البيانات. تأكد من صحة رابط الـ API وأذونات النشر.</td></tr>`;
             }
         }
 
         async function loadCustomers() {
             const tableBody = document.querySelector('#customers-tab tbody');
             const customerSelect = document.getElementById('customerSelect');
-            tableBody.innerHTML = `<tr><td colspan="4">${loadingSpinner}</td></tr>`;
+            tableBody.innerHTML = loadingSpinner;
             try {
                 const response = await fetch(`${WEB_APP_URL}?action=getCustomers`);
                 const result = await response.json();
@@ -462,29 +407,49 @@
                             <tr class="border-b border-gray-200 hover:bg-gray-50">
                                 <td class="py-3 px-6 text-right">${cust.name}</td>
                                 <td class="py-3 px-6 text-right ltr">${cust.phone}</td>
-                                <td class="py-3 px-6 text-right">${cust.email}</td>
-                                <td class="py-3 px-6 text-right">
-                                    <div class="flex justify-end item-center">
-                                        <button class="transform hover:text-red-500 hover:scale-110 transition-all duration-300"><i class="fas fa-trash"></i></button>
-                                    </div>
-                                </td>
+                                <td class="py-3 px-6 text-right">${cust.email || ''}</td>
                             </tr>`;
                         tableBody.innerHTML += row;
                         const option = `<option value="${cust.id}">${cust.name}</option>`;
                         customerSelect.innerHTML += option;
                     });
                 } else {
-                    tableBody.innerHTML = `<tr><td colspan="4" class="text-center p-4 text-gray-500">لا يوجد عملاء لعرضهم. قم بإضافة عميل جديد.</td></tr>`;
+                    tableBody.innerHTML = `<tr><td colspan="3" class="text-center p-4 text-gray-500">لا يوجد عملاء لعرضهم.</td></tr>`;
                 }
             } catch(error) {
-                 tableBody.innerHTML = `<tr><td colspan="4" class="text-center p-4 text-red-500">فشل تحميل البيانات. تأكد من صحة رابط الـ API.</td></tr>`;
-                 console.error("Error loading customers:", error);
+                 tableBody.innerHTML = `<tr><td colspan="3" class="text-center p-4 text-red-500">فشل تحميل البيانات. تأكد من صحة رابط الـ API وأذونات النشر.</td></tr>`;
             }
         }
 
-        // --- دوال إرسال البيانات إلى جوجل شيت ---
+        // --- دوال إرسال البيانات ---
+        async function postData(btn, payload) {
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            
+            try {
+                const response = await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payload),
+                    // لا نرسل أي هيدر، ليتعامل معه المتصفح كـ text/plain
+                    // هذا هو مفتاح حل مشكلة CORS Preflight
+                });
+                
+                // Google Script يعيد التوجيه، لذا لا يمكننا قراءة الرد مباشرة
+                // نعتبر أن الطلب ناجح طالما لم يحدث خطأ في الشبكة
+                return { status: 'success' };
+
+            } catch (error) {
+                console.error(`Error during POST request:`, error);
+                alert('حدث خطأ فادح أثناء الاتصال بالخادم. تحقق من الـ Console لمزيد من التفاصيل.');
+                return { status: 'error', message: error.message };
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        }
+
         document.getElementById('addCustomerBtn').addEventListener('click', async () => {
-            const btn = document.getElementById('addCustomerBtn');
             const name = document.getElementById('customerName').value;
             const phone = document.getElementById('customerPhone').value;
             const email = document.getElementById('customerEmail').value;
@@ -494,37 +459,19 @@
                 return;
             }
             
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin ml-2"></i> جار الإضافة...';
-
             const payload = { action: 'addCustomer', payload: { name, phone, email } };
-            try {
-                const response = await fetch(WEB_APP_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(payload),
-                    headers: { 'Content-Type': 'application/json' }
-                });
-                const result = await response.json();
+            const result = await postData(document.getElementById('addCustomerBtn'), payload);
 
-                if (result.status === 'success') {
-                    showSuccessAlert('تمت إضافة العميل بنجاح.');
-                    closeModal(document.getElementById('newCustomerModal'));
-                    document.getElementById('newCustomerForm').reset();
-                    loadCustomers();
-                } else {
-                    alert('حدث خطأ: ' + result.message);
-                }
-            } catch(error) {
-                alert('حدث خطأ فادح أثناء الاتصال بالخادم.');
-                console.error("Error adding customer:", error);
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = 'إضافة العميل';
+            if (result.status === 'success') {
+                showSuccessAlert('تمت إضافة العميل بنجاح.');
+                closeModal(document.getElementById('newCustomerModal'));
+                document.getElementById('newCustomerForm').reset();
+                loadCustomers();
+                loadRequests(); // تحديث كلا الجدولين
             }
         });
 
         document.getElementById('sendRequestBtn').addEventListener('click', async () => {
-            const btn = document.getElementById('sendRequestBtn');
             const customerSelect = document.getElementById('customerSelect');
             const customerName = customerSelect.options[customerSelect.selectedIndex].text;
             const method = document.querySelector('input[name="sendMethod"]:checked').value;
@@ -534,31 +481,13 @@
                 return;
             }
             
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin ml-2"></i> جار الإرسال...';
-
             const payload = { action: 'addRequest', payload: { customerName, method } };
-            try {
-                const response = await fetch(WEB_APP_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(payload),
-                    headers: { 'Content-Type': 'application/json' }
-                });
-                const result = await response.json();
+            const result = await postData(document.getElementById('sendRequestBtn'), payload);
 
-                if (result.status === 'success') {
-                    showSuccessAlert('تم إرسال طلب المراجعة بنجاح.');
-                    closeModal(document.getElementById('newRequestModal'));
-                    loadRequests();
-                } else {
-                    alert('حدث خطأ: ' + result.message);
-                }
-            } catch(error) {
-                alert('حدث خطأ فادح أثناء الاتصال بالخادم.');
-                console.error("Error sending request:", error);
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = 'إرسال الطلب';
+            if (result.status === 'success') {
+                showSuccessAlert('تم إرسال طلب المراجعة بنجاح.');
+                closeModal(document.getElementById('newRequestModal'));
+                loadRequests();
             }
         });
     });
